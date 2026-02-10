@@ -9,14 +9,12 @@ export class LinkedList {
 	append(value) {
 		if (this.head == null) {
 			this.head = new Node(value);
-		} else if (this.head.nextNode == null) {
-			this.head.nextNode = new Node(value);
 		} else {
-			let currentNode = this.head.nextNode;
-			if (currentNode.next)
-				while (currentNode.nextNode !== null) {
-					currentNode = currentNode.nextNode;
-				}
+			let currentNode = this.head;
+			while (currentNode.nextNode !== null) {
+				currentNode = currentNode.nextNode;
+			}
+
 			currentNode.nextNode = new Node(value);
 		}
 	}
@@ -47,7 +45,18 @@ export class LinkedList {
 
 	// represent linked list objects as  strings
 	// '( value ) -> ( value ) -> ( value ) -> null'
-	toString() {}
+	toString() {
+		const currentOutput = "";
+		currentOutput.concat(`( ${this.head.value} )`);
+		let currentNode = this.head;
+		while (currentNode.nextNode !== null) {
+			currentNode = currentNode.nextNode;
+			currentOutput.concat(` -> ( ${currentNode.value} )`);
+		}
+		currentOutput.concat(` -> null`);
+
+		return currentOutput;
+	}
 
 	// insert new nodes with the given values at the given index (if index out of bounds throw RangeError)
 	insertAt(index, ...values) {}

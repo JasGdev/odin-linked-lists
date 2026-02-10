@@ -8,9 +8,8 @@ beforeEach(() => {
 });
 
 test("creating Linked list", () => {
-	list.append(5);
-	const testNode = new Node(5);
-	expect(list.head).toEqual(testNode);
+    list = new LinkedList();
+	expect(list.head).toEqual(null);
 });
 
 test("adding to Linked List x2", () => {
