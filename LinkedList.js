@@ -1,16 +1,16 @@
 import { Node } from "./Node";
 
 export class LinkedList {
-	constructor(head = null) {
-		this.head = head;
+	constructor(headNode = null) {
+		this.headNode = headNode;
 	}
 
 	// add to end of list
 	append(value) {
-		if (this.head == null) {
-			this.head = new Node(value);
+		if (this.headNode == null) {
+			this.headNode = new Node(value);
 		} else {
-			let currentNode = this.head;
+			let currentNode = this.headNode;
 			while (currentNode.nextNode !== null) {
 				currentNode = currentNode.nextNode;
 			}
@@ -21,35 +21,51 @@ export class LinkedList {
 
 	// add to start of list
 	prepend(value) {
-		let prevHead = this.head;
-		this.head = new Node(value, prevHead);
+		let prevheadNode = this.headNode;
+		this.headNode = new Node(value, prevheadNode);
 	}
 
 	// total number of nodes
 	size() {
 		let size = 0;
-        if (this.head == null) {
-            return size
-        }
-		let currentNode = this.head;
+		if (this.headNode == null) {
+			return size;
+		}
+		let currentNode = this.headNode;
 		while (currentNode.nextNode !== null) {
 			currentNode = currentNode.nextNode;
 			size += 1;
 		}
 		size += 1;
-        return size
+		return size;
 	}
 
 	// return first node in list (undefined if list empty)
-	head() {}
+	head() {
+		if (this.headNode == null) {
+			return undefined;
+		} else {
+			return this.headNode;
+		}
+	}
 
 	// return value of final node (undefined if list empty)
-	tail() {}
+	tail() {
+		if (this.headNode == null) {
+			return undefined;
+		} else {
+			let currentNode = this.head;
+			while (currentNode.nextNode !== null) {
+				currentNode = currentNode.nextNode;
+			}
+			return;
+		}
+	}
 
 	// return value of node at index (undefined if list empty)
 	at(index) {}
 
-	// remove the head node from list and return value (undefined if list empty)
+	// remove the headNode node from list and return value (undefined if list empty)
 	pop() {}
 
 	// return true if the value is in list, false else
@@ -62,8 +78,8 @@ export class LinkedList {
 	// '( value ) -> ( value ) -> ( value ) -> null'
 	toString() {
 		let currentOutput = "";
-		currentOutput = currentOutput.concat(`( ${this.head.value} )`);
-		let currentNode = this.head;
+		currentOutput = currentOutput.concat(`( ${this.headNode.value} )`);
+		let currentNode = this.headNode;
 		while (currentNode.nextNode !== null) {
 			currentNode = currentNode.nextNode;
 			currentOutput = currentOutput.concat(` -> ( ${currentNode.value} )`);
