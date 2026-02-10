@@ -1,5 +1,13 @@
-import { LinkedList } from "./LinkedList";
+import { LinkedList } from "./LinkedList.js";
 
-test("adds 1 + 2 to equal 3", () => {
-	expect(sum(1, 2)).toBe(3);
+let list;
+
+beforeEach(() =>{
+    list = new LinkedList();
+})
+
+
+test("creating Linked list", () => {
+    list.append(5)
+	expect(list.head).toBe(5);
 });
