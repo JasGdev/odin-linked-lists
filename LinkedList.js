@@ -1,16 +1,25 @@
-import { Node } from "./Node"
+import { Node } from "./Node";
 
 export class LinkedList {
 	constructor(head = null) {
-        this.head = head
-    }
+		this.head = head;
+	}
 
 	// add to end of list
 	append(value) {
-        if (this.head == null){
-            this.head = new Node('value')
-        }
-    }
+		if (this.head == null) {
+			this.head = new Node(value);
+		} else if (this.head.nextNode == null) {
+			this.head.nextNode = new Node(value);
+		} else {
+			let currentNode = this.head.nextNode;
+			if (currentNode.next)
+				while (currentNode.nextNode !== null) {
+					currentNode = currentNode.nextNode;
+				}
+			currentNode.nextNode = new Node(value);
+		}
+	}
 
 	// add to start of list
 	prepend(value) {}
