@@ -8,7 +8,7 @@ beforeEach(() => {
 });
 
 test("creating Linked list", () => {
-    list = new LinkedList();
+	list = new LinkedList();
 	expect(list.head).toEqual(null);
 });
 
@@ -39,3 +39,19 @@ test("adding to Linked List x3", () => {
 	expect(list.head.nextNode.value).toEqual(7);
 	expect(list.head.nextNode.nextNode.value).toEqual(9);
 });
+
+test("toString implementation test 1", () => {
+	list.append("dog");
+	list.append("cat");
+	list.append("parrot");
+	list.append("hamster");
+	list.append("snake");
+	list.append("turtle");
+	expect(list.toString()).toBe("( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> null");
+});
+
+test("toString implementation test 2", () => {
+	list.append("dog");
+	expect(list.toString()).toBe("( dog ) -> null");
+});
+

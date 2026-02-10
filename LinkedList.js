@@ -46,15 +46,14 @@ export class LinkedList {
 	// represent linked list objects as  strings
 	// '( value ) -> ( value ) -> ( value ) -> null'
 	toString() {
-		const currentOutput = "";
-		currentOutput.concat(`( ${this.head.value} )`);
+		let currentOutput = "";
+		currentOutput = currentOutput.concat(`( ${this.head.value} )`);
 		let currentNode = this.head;
 		while (currentNode.nextNode !== null) {
 			currentNode = currentNode.nextNode;
-			currentOutput.concat(` -> ( ${currentNode.value} )`);
+            currentOutput = currentOutput.concat(` -> ( ${currentNode.value} )`);
 		}
-		currentOutput.concat(` -> null`);
-
+		currentOutput = currentOutput.concat(` -> null`);
 		return currentOutput;
 	}
 
