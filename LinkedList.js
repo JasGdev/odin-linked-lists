@@ -171,18 +171,16 @@ export class LinkedList {
 				currentIndex += 1;
 			}
             const indexPrevNode = currentNode;
-            const IndexNode = currentNode.nextNode
-            let latestNode
-
-
-
-
+            const indexNode = currentNode.nextNode
             const lastVal = values.pop()
             indexPrevNode.nextNode = null;
             for (const val of values){
                 this.append(val)
             }
-			return currentNode.value;
+            while (currentNode.nextNode !== null) {
+				currentNode = currentNode.nextNode;
+			}
+            currentNode.nextNode = new Node(lastVal, indexNode)
         }
 	}
 

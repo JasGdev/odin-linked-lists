@@ -239,5 +239,7 @@ describe("insertAt() implementation", () => {
         expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> null");
         list.insertAt(1, 1)
         expect(list.toString()).toBe("( 1 ) -> ( 1 ) -> ( 2 ) -> ( 3 ) -> null");
+        list.insertAt(2, 1, 4)
+        expect(list.toString()).toBe("( 1 ) -> ( 1 ) -> ( 1 ) -> ( 4 ) -> ( 2 ) -> ( 3 ) -> null");
 	});
 });
