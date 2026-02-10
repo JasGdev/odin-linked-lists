@@ -229,7 +229,7 @@ describe("insertAt() implementation", () => {
         expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> ( 5 ) -> null");
         expect(() => {
 			list.insertAt(6, 1);
-		}).toThrow(new Error("Out of range of linked list!"));
+		}).toThrow(new RangeError("Out of range of linked list!"));
 	});
 
 	test("insertAt() on a size 3 LinkedList", () => {

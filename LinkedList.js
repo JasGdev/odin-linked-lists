@@ -146,42 +146,42 @@ export class LinkedList {
 
 	// insert new nodes with the given values at the given index (if index out of bounds throw RangeError)
 	insertAt(index, ...values) {
-		if (index == 0) {
+		if (index < 0 || index > this.size()) {
+			throw new RangeError("Out of range of linked list!");
+		} else if (index == 0) {
 			const reversedNewNodesList = values.reverse();
 			for (const val of reversedNewNodesList) {
 				this.prepend(val);
 			}
-		} else if (index < 0 || index > this.size()) {
-			throw new Error("Out of range of linked list!");
 		} else if (index === this.size()) {
 			for (const val of values) {
 				this.append(val);
 			}
 		} else {
-            // iterate to index
-            // store index-1 node and index node
-            // make index-1 node nextNode = null
-            // append through value of values
-            // when appending last value set its nextNode to index node
+			// iterate to index
+			// store index-1 node and index node
+			// make index-1 node nextNode = null
+			// append through value of values
+			// when appending last value set its nextNode to index node
 
-            let currentIndex = 0;
+			let currentIndex = 0;
 			let currentNode = this.headNode;
 			while (currentIndex != index - 1) {
 				currentNode = currentNode.nextNode;
 				currentIndex += 1;
 			}
-            const indexPrevNode = currentNode;
-            const indexNode = currentNode.nextNode
-            const lastVal = values.pop()
-            indexPrevNode.nextNode = null;
-            for (const val of values){
-                this.append(val)
-            }
-            while (currentNode.nextNode !== null) {
+			const indexPrevNode = currentNode;
+			const indexNode = currentNode.nextNode;
+			const lastVal = values.pop();
+			indexPrevNode.nextNode = null;
+			for (const val of values) {
+				this.append(val);
+			}
+			while (currentNode.nextNode !== null) {
 				currentNode = currentNode.nextNode;
 			}
-            currentNode.nextNode = new Node(lastVal, indexNode)
-        }
+			currentNode.nextNode = new Node(lastVal, indexNode);
+		}
 	}
 
 	// remove node at given index (if index out of bounds throw RangeError)
