@@ -5,22 +5,16 @@ export class LinkedList {
 		this.headNode = headNode;
 	}
 
-	append(val) {
+	append(value) {
 		if (this.headNode == null) {
-			this.headNode = new Node(val);
+			this.headNode = new Node(value);
 		} else {
 			let currentNode = this.headNode;
 			while (currentNode.nextNode !== null) {
 				currentNode = currentNode.nextNode;
 			}
-            if (val instanceof Node){
-                currentNode.nextNode = val
 
-            } else {
-                currentNode.nextNode = new Node(val);
-
-            }
-			
+			currentNode.nextNode = new Node(value);
 		}
 	}
 
@@ -178,7 +172,7 @@ export class LinkedList {
 			}
             const indexPrevNode = currentNode;
             const IndexNode = currentNode.nextNode
-            let latestNode;
+            let latestNode
 
 
 
