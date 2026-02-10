@@ -1,8 +1,16 @@
+import { Node } from "./Node"
+
 export class LinkedList {
-	constructor() {}
+	constructor(head = null) {
+        this.head = head
+    }
 
 	// add to end of list
-	append(value) {}
+	append(value) {
+        if (this.head == null){
+            this.head = new Node('value')
+        }
+    }
 
 	// add to start of list
 	prepend(value) {}
