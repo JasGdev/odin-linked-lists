@@ -54,11 +54,11 @@ export class LinkedList {
 		if (this.headNode == null) {
 			return undefined;
 		} else {
-			let currentNode = this.head;
+			let currentNode = this.headNode;
 			while (currentNode.nextNode !== null) {
 				currentNode = currentNode.nextNode;
 			}
-			return;
+			return currentNode.value;
 		}
 	}
 

@@ -107,4 +107,25 @@ describe("head() and tail() implementation", () => {
         expect(list.tail()).toBe(undefined)
 	});
 
+    test("head and tail on 2x LinkedList", () => {
+        list.append(1);
+		list.append(2);
+        const testNode2 = new Node(2)
+        const testNode1 = new Node(1, testNode2)
+
+		expect(list.head()).toEqual(testNode1);
+        expect(list.tail()).toBe(2)
+	});
+
+    test("tail on 1x LinkedList", () => {
+        list.append(1);
+        expect(list.tail()).toBe(1)
+	});
+
+    test("head on 1x LinkedList", () => {
+        list.append(1);
+        const testNode1 = new Node(1)
+        expect(list.head()).toEqual(testNode1)
+	});
+
 });
