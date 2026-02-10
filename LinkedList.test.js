@@ -221,13 +221,13 @@ describe("insertAt() implementation", () => {
 		expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> null");
 	});
 
-    test("insertAt(1) on 1 size LinkedList", () => {
-        list.append(1)
+	test("insertAt(1) on 1 size LinkedList", () => {
+		list.append(1);
 		list.insertAt(1, 2, 3, 4);
 		expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> null");
-        list.insertAt(4, 5);
-        expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> ( 5 ) -> null");
-        expect(() => {
+		list.insertAt(4, 5);
+		expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> ( 5 ) -> null");
+		expect(() => {
 			list.insertAt(6, 1);
 		}).toThrow(new RangeError("Out of range of linked list!"));
 	});
@@ -236,10 +236,51 @@ describe("insertAt() implementation", () => {
 		list.append(1);
 		list.append(2);
 		list.append(3);
-        expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> null");
-        list.insertAt(1, 1)
-        expect(list.toString()).toBe("( 1 ) -> ( 1 ) -> ( 2 ) -> ( 3 ) -> null");
-        list.insertAt(2, 1, 4)
-        expect(list.toString()).toBe("( 1 ) -> ( 1 ) -> ( 1 ) -> ( 4 ) -> ( 2 ) -> ( 3 ) -> null");
+		expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> null");
+		list.insertAt(1, 1);
+		expect(list.toString()).toBe("( 1 ) -> ( 1 ) -> ( 2 ) -> ( 3 ) -> null");
+		list.insertAt(2, 1, 4);
+		expect(list.toString()).toBe("( 1 ) -> ( 1 ) -> ( 1 ) -> ( 4 ) -> ( 2 ) -> ( 3 ) -> null");
+	});
+});
+
+describe("removeAt() implementation", () => {
+	test("removeAt(0) on empty LinkedList", () => {
+		expect(() => {
+			list.removeAt(0);
+		}).toThrow(new RangeError("Out of range of linked list!"));
+
+		expect(() => {
+			list.removeAt(-1);
+		}).toThrow(new RangeError("Out of range of linked list!"));
+
+		expect(() => {
+			list.removeAt(1);
+		}).toThrow(new RangeError("Out of range of linked list!"));
+	});
+
+	test("removeAt(0) on 4 size LinkedList", () => {
+		list.append(1);
+		list.insertAt(1, 2, 3, 4);
+		expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> null");
+		list.removeAt(0);
+		expect(list.toString()).toBe("( 2 ) -> ( 3 ) -> ( 4 ) -> null");
+	});
+
+	test("removeAt() on a size 4 LinkedList", () => {
+		list.append(1);
+		list.insertAt(1, 2, 3, 4);
+		expect(list.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> null");
+		expect(() => {
+			list.removeAt(4);
+		}).toThrow(new RangeError("Out of range of linked list!"));
+		list.removeAt(1);
+		expect(list.toString()).toBe("( 1 ) -> ( 3 ) -> ( 4 ) -> null");
+		list.removeAt(2);
+		expect(list.toString()).toBe("( 1 ) -> ( 3 ) -> null");
+		list.removeAt(1);
+		expect(list.toString()).toBe("( 1 ) -> null");
+		list.removeAt(0);
+		expect(list.toString()).toBe("null");
 	});
 });

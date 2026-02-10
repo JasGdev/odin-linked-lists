@@ -62,7 +62,7 @@ export class LinkedList {
 		if (this.headNode == null) {
 			return undefined;
 		} else if (index < 0 || index >= this.size()) {
-			throw new Error("Out of range of linked list!");
+			throw new RangeError("Out of range of linked list!");
 		} else {
 			let currentIndex = 0;
 			let currentNode = this.headNode;
@@ -149,7 +149,7 @@ export class LinkedList {
 		if (index < 0 || index > this.size()) {
 			throw new RangeError("Out of range of linked list!");
 		} else if (index == 0) {
-			const reversedNewNodesList = values.reverse();
+			const reversedNewNodesList = [...values].reverse();
 			for (const val of reversedNewNodesList) {
 				this.prepend(val);
 			}
@@ -185,5 +185,22 @@ export class LinkedList {
 	}
 
 	// remove node at given index (if index out of bounds throw RangeError)
-	removeAt(index) {}
+	removeAt(index) {
+        if (index < 0 || index >= this.size() || this.headNode == null) {
+			throw new RangeError("Out of range of linked list!");
+		} else if (index == 0) {
+            this.pop()
+            return
+        } else {
+            let currentIndex = 0;
+			let currentNode = this.headNode;
+			while (currentIndex != index - 1) {
+				currentNode = currentNode.nextNode;
+				currentIndex += 1;
+			}
+            const prevIndexNode = currentNode
+            const followingIndexNode = currentNode.nextNode.nextNode
+            prevIndexNode.nextNode = followingIndexNode
+        }
+    }
 }
