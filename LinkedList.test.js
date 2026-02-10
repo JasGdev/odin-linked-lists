@@ -72,7 +72,31 @@ describe("prepend() implementation", () => {
 	test("prepend x3", () => {
 		list.prepend(1);
 		list.prepend(2);
-        list.prepend(3);
+		list.prepend(3);
 		expect(list.toString()).toBe("( 3 ) -> ( 2 ) -> ( 1 ) -> null");
 	});
+});
+
+describe("size() implementation", () => {
+	test("size on empty LinkedList", () => {
+		expect(list.size()).toBe(0);
+	});
+
+	test("size on size 2 from prepend LinkedList", () => {
+		list.prepend(1);
+		list.prepend(2);
+		expect(list.size()).toBe(2);
+	});
+	test("size on size 2 from append LinkedList", () => {
+		list.append(1);
+		list.append(2);
+		expect(list.size()).toBe(2);
+	});
+
+    test("size on size 3 from append and prepend LinkedList", () => {
+			list.append(1);
+			list.append(2);
+            list.prepend(3);
+			expect(list.size()).toBe(3);
+		});
 });

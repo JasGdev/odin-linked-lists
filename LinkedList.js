@@ -21,12 +21,24 @@ export class LinkedList {
 
 	// add to start of list
 	prepend(value) {
-        let prevHead = this.head;
-        this.head = new Node(value, prevHead)
-    }
+		let prevHead = this.head;
+		this.head = new Node(value, prevHead);
+	}
 
 	// total number of nodes
-	size() {}
+	size() {
+		let size = 0;
+        if (this.head == null) {
+            return size
+        }
+		let currentNode = this.head;
+		while (currentNode.nextNode !== null) {
+			currentNode = currentNode.nextNode;
+			size += 1;
+		}
+		size += 1;
+        return size
+	}
 
 	// return first node in list (undefined if list empty)
 	head() {}
@@ -54,7 +66,7 @@ export class LinkedList {
 		let currentNode = this.head;
 		while (currentNode.nextNode !== null) {
 			currentNode = currentNode.nextNode;
-            currentOutput = currentOutput.concat(` -> ( ${currentNode.value} )`);
+			currentOutput = currentOutput.concat(` -> ( ${currentNode.value} )`);
 		}
 		currentOutput = currentOutput.concat(` -> null`);
 		return currentOutput;
