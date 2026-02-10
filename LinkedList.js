@@ -20,7 +20,10 @@ export class LinkedList {
 	}
 
 	// add to start of list
-	prepend(value) {}
+	prepend(value) {
+        let prevHead = this.head;
+        this.head = new Node(value, prevHead)
+    }
 
 	// total number of nodes
 	size() {}
